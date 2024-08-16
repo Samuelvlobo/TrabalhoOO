@@ -6,7 +6,7 @@ import cadastros.CadastroProfessor;
 
 public class MenuProfessor {
 
-    public static Professor dadosNovoProfessor() {
+    public static Professor dadosNovoProfessor() { // instancia um objeto para cadastrar
         String nome = lerNome();
         String cpf = lerCPF();
         String email = lerEmail();

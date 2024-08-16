@@ -1,0 +1,30 @@
+INTEGRANTE DO GRUPO:
+
+Aluno: SAMUEL RODRIGUES VIANA LOBO
+Matricula: 232014191
+
+
+Estrutura do Projeto: 
+
+O projeto é dividido em pacotes conforme as funcionalidades:
+
+app: Contém as classes principais do domínio, como Aluno, Professor, Disciplina, e Turma.
+
+cadastros: Contém as classes responsáveis pelo gerenciamento dos cadastros, como CadastroAluno, CadastroProfessor, CadastroDisciplina, e CadastroTurma.
+
+exceptions: Contém as classes de exceção personalizadas, como CampoEmBrancoException, DisciplinaNaoAtribuidaException, e ProfessorNaoAtribuidoException.
+
+view: Contém as classes que implementam a interface de usuário, como MenuAluno, MenuProfessor, MenuDisciplina, e MenuTurma.
+
+Exemplo de Execução:
+
+Ao iniciar o programa, você verá um menu principal com as seguintes opções:
+
+1 - Abrir cadastro de alunos
+2 - Abrir cadastro de professores
+3 - Abrir cadastro de disciplinas
+4 - Abrir cadastro de turmas
+0 - Sair
+
+Escolha uma opção digitando o número correspondente. Cada submenu permite cadastrar, pesquisar, e remover os registros correspondentes.
+

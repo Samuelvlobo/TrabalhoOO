@@ -7,18 +7,17 @@ import exceptions.CampoEmBrancoException;
 
 public class MenuDisciplina {
 
-    private static Disciplina dadosNovaDisciplina() throws CampoEmBrancoException {
-        String codigo = lerCodigoDisciplina();
-        String nome = lerNomeDisciplina();
-
+    public static Disciplina dadosNovaDisciplina() throws CampoEmBrancoException {
+        String codigo = lerCodigo();
+        String nome = lerNome();
         return new Disciplina(codigo, nome);
     }
 
-    private static String lerCodigoDisciplina() {
+    private static String lerCodigo() {
         return JOptionPane.showInputDialog("Informe o código da disciplina: ");
     }
 
-    private static String lerNomeDisciplina() {
+    private static String lerNome() {
         return JOptionPane.showInputDialog("Informe o nome da disciplina: ");
     }
 
@@ -39,27 +38,22 @@ public class MenuDisciplina {
                     case 1:
                         Disciplina novaDisciplina = dadosNovaDisciplina();
                         cadDisciplina.cadastrarDisciplina(novaDisciplina);
-                        JOptionPane.showMessageDialog(null, "Disciplina cadastrada com sucesso.");
                         break;
 
                     case 2:
-                        String codigo = lerCodigoDisciplina();
+                        String codigo = lerCodigo();
                         Disciplina d = cadDisciplina.pesquisarDisciplina(codigo);
-                        if (d != null) {
+                        if (d != null)
                             JOptionPane.showMessageDialog(null, d.toString());
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Disciplina não encontrada.");
-                        }
                         break;
 
                     case 3:
-                        codigo = lerCodigoDisciplina();
+                        codigo = lerCodigo();
                         Disciplina remover = cadDisciplina.pesquisarDisciplina(codigo);
                         boolean removido = cadDisciplina.removerDisciplina(remover);
                         if (removido) {
-                            JOptionPane.showMessageDialog(null, "Disciplina removida do cadastro.");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Disciplina não encontrada.");
+                            JOptionPane.showMessageDialog(null, "Disciplina removida do cadastro");
+                            System.gc();
                         }
                         break;
 
@@ -67,8 +61,9 @@ public class MenuDisciplina {
                         break;
                 }
             } catch (CampoEmBrancoException e) {
-                JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
+
         } while (opcao != 0);
     }
 }

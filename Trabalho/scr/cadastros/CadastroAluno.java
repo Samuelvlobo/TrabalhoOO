@@ -1,18 +1,25 @@
 package cadastros;
 
-import app.Aluno;
 import java.util.ArrayList;
+import java.util.List;
+
+import app.Aluno;
 
 public class CadastroAluno {
-	private ArrayList<Aluno> alunos;
+	int numAlunos;
+	private List<Aluno> alunos;
 
 	public CadastroAluno() {
-		alunos = new ArrayList<>();
+		numAlunos = 0;
+		alunos = new ArrayList<Aluno>();
 	}
 
 	public int cadastrarAluno(Aluno a) {
-		alunos.add(a);
-		return alunos.size();
+		boolean cadastrou = alunos.add(a);
+		if (cadastrou) {
+			numAlunos = alunos.size();
+		}
+		return numAlunos;
 	}
 
 	public Aluno pesquisarAluno(String matriculaAluno) {
@@ -25,19 +32,20 @@ public class CadastroAluno {
 	}
 
 	public boolean removerAluno(Aluno a) {
-		if (a == null) {
-			return false;
+		boolean removeu = false;
+		if (alunos.contains(a)) {
+			removeu = alunos.remove(a);
 		}
-		return alunos.remove(a);
+		return removeu;
 	}
 
 	public boolean atualizarAluno(String matricula, Aluno a) {
-		for (int i = 0; i < alunos.size(); i++) {
-			if (alunos.get(i).getMatricula().equalsIgnoreCase(matricula)) {
-				alunos.set(i, a);
-				return true;
-			}
+		boolean resposta = false;
+		Aluno remover = pesquisarAluno(matricula);
+		if (remover != null) {
+			alunos.remove(remover);
+			resposta = alunos.add(a);
 		}
-		return false;
+		return resposta;
 	}
 }

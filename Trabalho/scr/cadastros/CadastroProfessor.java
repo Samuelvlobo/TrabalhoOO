@@ -17,7 +17,8 @@ public class CadastroProfessor {
 
     public Professor pesquisarProfessor(String matriculaFUB) {
         for (Professor p : professores) {
-            if (p.getMatriculaFUB().equalsIgnoreCase(matriculaFUB)) {
+            if (p.getMatriculaFUB().equalsIgnoreCase(matriculaFUB)) { // varre o vetor para procurar o professor com a
+                                                                      // mesma matricula
                 return p;
             }
         }

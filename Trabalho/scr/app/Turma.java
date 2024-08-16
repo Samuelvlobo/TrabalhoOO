@@ -1,11 +1,10 @@
 package app;
 
-import exceptions.DisciplinaNaoAtribuidaException;
-import exceptions.ProfessorNaoAtribuidoException;
-import exceptions.CampoEmBrancoException;
-
 import java.util.ArrayList;
 import java.util.List;
+import exceptions.CampoEmBrancoException;
+import exceptions.ProfessorNaoAtribuidoException;
+import exceptions.DisciplinaNaoAtribuidaException;
 
 public class Turma {
     private String codigo;
@@ -31,21 +30,22 @@ public class Turma {
     }
 
     public void matricularAluno(Aluno aluno) {
-        alunosMatriculados.add(aluno);
+        if (aluno != null && !alunosMatriculados.contains(aluno)) {
+            alunosMatriculados.add(aluno);
+        }
     }
 
-    public String imprimirListaPresenca() {
-        StringBuilder lista = new StringBuilder();
-        lista.append("Disciplina: ").append(disciplina.getNome()).append("\n");
-        lista.append("Professor: ").append(professor.getNome()).append("\n");
-        lista.append("Código da Turma: ").append(codigo).append("\n");
-        lista.append("Lista de Alunos:\n");
+    public String imprimirLista() {
+        String resposta = "Disciplina: " + disciplina.getNome() + "\n";
+        resposta += "Professor: " + professor.getNome() + "\n";
+        resposta += "Código da Turma: " + codigo + "\n";
+        resposta += "Lista de Alunos:\n";
 
         for (Aluno aluno : alunosMatriculados) {
-            lista.append(aluno.getMatricula()).append(" - ").append(aluno.getNome()).append("\n");
+            resposta += aluno.getMatricula() + " - " + aluno.getNome() + "\n";
         }
 
-        return lista.toString();
+        return resposta;
     }
 
     public Object getCodigo() {

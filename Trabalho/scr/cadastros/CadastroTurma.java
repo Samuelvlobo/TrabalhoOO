@@ -25,6 +25,18 @@ public class CadastroTurma {
         return null;
     }
 
+    public String pesquisar(String codigo) {
+        String aux;
+        for (Turma turma : turmas) {
+            if (turma.getCodigo().equals(codigo)) {
+
+                aux = "Turma: " + codigo;
+                return aux;
+            }
+        }
+        return null;
+    }
+
     public boolean removerTurma(Turma turma) {
         return turmas.remove(turma);
     }
